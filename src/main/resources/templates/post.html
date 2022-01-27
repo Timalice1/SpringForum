@@ -7,10 +7,12 @@
 <body>
     <h3>New Post</h3>
     <hr>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" th:object="${post}">
         <input type="text" name="title"><br>
+        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
         <br>
-        <input type="text" name="description" id="description"><br>
+        <input type="text" name="description"><br>
+        <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
         <br>
         <input type="file" name="photo" id="photo"><br>
         <input type="submit" value="Upload"><br>
