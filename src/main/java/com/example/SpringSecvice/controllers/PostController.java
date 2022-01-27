@@ -8,31 +8,34 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
+
 @Controller
-@RequestMapping("/new-post")
+@RequestMapping("/post")
 public class PostController {
 
     @Autowired
     PostService postService;
 
     @GetMapping()
-    public String add() {
+    public String add(@ModelAttribute("post") Post post) {
         return "post";
     }
 
     @PostMapping()
-    public String newpost(@ModelAttribute("post")Post post, BindingResult bindingResult,
+    public String newpost(@ModelAttribute("post") @Valid Post post, BindingResult bindingResult,
                           @RequestParam(value = "photo", required = false) MultipartFile img) {
 
+        if(bindingResult.hasErrors()) {
+            return "post";
+        }
+
         if(!img.isEmpty()){
-            if(!postService.add(post, bindingResult, img))
-                return "post";
+            postService.add(post, img);
             return "redirect:/all";
         }
 
-        if(!postService.add(post, bindingResult))
-            return "post";
-
+        postService.add(post);
         return "redirect:/all";
     }
 

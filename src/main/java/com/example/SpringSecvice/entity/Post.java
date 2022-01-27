@@ -3,22 +3,24 @@ package com.example.SpringSecvice.entity;
 
 import lombok.Data;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-    
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 @Data
+@Entity
+@Table(name = "post")
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long post_id;
 
-    @NotNull(message = "This field cannot be empty")
+    @NotEmpty(message = "This field cannot be null")
+    @Size(min = 10, message = "At least 10 chars")
     private String title;
 
-    @NotNull(message = "This field cannot be empty")
+    @NotEmpty(message = "This field cannot be null")
     private String description;
 
     private String creationDate;
@@ -26,4 +28,8 @@ public class Post {
     private String photoName;
 
     private int views;
+
+    public boolean hasImage(){
+        return photoName != null;
+    }
 }

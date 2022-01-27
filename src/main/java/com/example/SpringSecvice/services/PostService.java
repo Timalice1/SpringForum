@@ -29,11 +29,7 @@ public class PostService {
      * @param post new post from HTML
      * @return true if all ok
      */
-    public boolean add(@Valid Post post, BindingResult result){
-
-        if(result.hasErrors())
-            return false;
-
+    public boolean add(@Valid Post post){
         post.setCreationDate(new SimpleDateFormat("dd MMMM yyyy HH:mm:ss").format(new Date()));
         postRepository.save(post);
         return true;
@@ -45,10 +41,7 @@ public class PostService {
      * @param file img from HTML
      * @return true if saved ok
      */
-    public boolean add(@Valid Post post, BindingResult result, MultipartFile file){
-
-        if(result.hasErrors())
-            return false;
+    public boolean add(@Valid Post post, MultipartFile file){
 
         post.setPhotoName(uploadPhoto(file));
         post.setCreationDate(new SimpleDateFormat("dd MMMM yyyy HH:mm:ss").format(new Date()));
@@ -61,7 +54,7 @@ public class PostService {
      * @param file img from HTML
      * @return file name
      */
-    public String uploadPhoto(MultipartFile file) {
+    private String uploadPhoto(MultipartFile file) {
         String name = file.getOriginalFilename();
 
         try(FileOutputStream fos = new FileOutputStream(uploadPath + name);){
