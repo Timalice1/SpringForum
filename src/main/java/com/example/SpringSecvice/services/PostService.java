@@ -32,9 +32,7 @@ public class PostService {
      * @return true if all ok
      */
     public boolean add(@Valid Post post){
-        Date create = new Date();
-        post.setCreationDate(new SimpleDateFormat("dd MMMM yyyy HH:mm:ss").format(create));
-        post.setDate(create);
+        post.setCreationDate(new SimpleDateFormat("dd MMMM yyyy HH:mm:ss").format(new Date()));
         postRepository.save(post);
         return true;
     }
@@ -48,9 +46,7 @@ public class PostService {
     public boolean add(@Valid Post post, MultipartFile file){
 
         post.setPhotoName(uploadPhoto(file));
-        Date create = new Date();
-        post.setCreationDate(new SimpleDateFormat("dd MMMM yyyy HH:mm:ss").format(create));
-        post.setDate(create);
+        post.setCreationDate(new SimpleDateFormat("dd MMMM yyyy HH:mm:ss").format(new Date()));
         postRepository.save(post);
         return true;
     }
