@@ -32,11 +32,11 @@ public class PostController {
 
         if(!img.isEmpty()){
             postService.add(post, img);
-            return "redirect:/all";
+            return "redirect:/";
         }
 
         postService.add(post);
-        return "redirect:/all";
+        return "redirect:/";
     }
 
 

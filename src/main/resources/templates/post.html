@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Post</title>
+    <style>
+        body{
+            background-image: url(bg.png);
+        }
+    </style>
 </head>
 <body>
     <h3>New Post</h3>
@@ -11,10 +16,10 @@
         <input type="text" name="title"><br>
         <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
         <br>
-        <input type="text" name="description"><br>
+        <textarea name="description" id="description" cols="20" rows="10"></textarea>
         <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
-        <br>
-        <input type="file" name="photo" id="photo"><br>
+        <br><br>
+        <input type="file" name="photo" id="photo"><br><br>
         <input type="submit" value="Upload"><br>
     </form>
     <hr>

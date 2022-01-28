@@ -5,12 +5,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body{
+            background-image: url(bg.png);
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
     <a href="/post">Upload</a>
-    <a href="/post/new">Upload2</a>
     <hr>
-    <a href="/all">all</a>
+    <div th:each="post : ${posts}" class="post">
+        <p style="margin-left: 30px"><b th:text="${post.title}"/>   <small th:text="${post.creationDate}"/><p>
+        <div th:if="post.hasImage" style="margin-left: 50px">
+            <img th:src="@{resources/images/} + ${post.photoName}" height="200px">
+        </div>
+        <p th:text="${post.description}" style="margin-left: 50px"></p>
+        <hr>
+    </div>
 </body>
 </html>

@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -57,7 +59,7 @@ public class PostService {
     private String uploadPhoto(MultipartFile file) {
         String name = file.getOriginalFilename();
 
-        try(FileOutputStream fos = new FileOutputStream(uploadPath + name)){
+        try(BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(uploadPath+name))){
             fos.write(file.getBytes());
             fos.flush();
         }catch (IOException e){

@@ -16,10 +16,10 @@ public class MainController {
     @Autowired
     PostService postService;
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public String index(Model model){
         model.addAttribute("posts", postService.findAll());
-        return "all";
+        return "index";
     }
 
 }
