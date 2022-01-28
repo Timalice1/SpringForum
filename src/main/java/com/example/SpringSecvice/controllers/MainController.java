@@ -18,7 +18,7 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("posts", postService.findAll());
+        model.addAttribute("posts", postService.findAllSortByDate());
         return "index";
     }
 

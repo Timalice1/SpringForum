@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Data
 @Entity
@@ -22,6 +23,8 @@ public class Post {
 
     @NotEmpty(message = "This field cannot be null")
     private String description;
+
+    private Date date;
 
     private String creationDate;
 
