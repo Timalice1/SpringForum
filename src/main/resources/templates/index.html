@@ -13,10 +13,10 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="/post">Upload</a>
+    <a href="/post/new">Upload</a>
     <hr>
     <div th:each="post : ${posts}" class="post">
-        <p style="margin-left: 30px"><b th:text="${post.title}"/>   <small th:text="${post.creationDate}"/><p>
+        <p style="margin-left: 30px"><a th:href="@{/post/{id}(id=${post.getPost_id()})}"><b th:text="${post.title}"/></a>   <small th:text="${post.creationDate}"/><p>
         <div th:if="${post.hasImage}" style="margin-left: 50px">
             <img th:src="@{resources/images/} + ${post.photoName}" height="200px">
         </div>

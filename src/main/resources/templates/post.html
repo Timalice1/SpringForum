@@ -2,26 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Post</title>
-    <style>
-        body{
-            background-image: url(bg.png);
-        }
-    </style>
+    <title th:text="${post.title}"/>
 </head>
 <body>
-    <h3>New Post</h3>
-    <hr>
-    <form method="post" enctype="multipart/form-data" th:object="${post}">
-        <input type="text" name="title"><br>
-        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
-        <br>
-        <textarea name="description" id="description" cols="20" rows="10"></textarea>
-        <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
-        <br><br>
-        <input type="file" name="photo" id="photo"><br><br>
-        <input type="submit" value="Upload"><br>
-    </form>
-    <hr>
+  <h1><a href="/">Main</a></h1>
+  <hr>
+  <h2 th:text="${post.title}"/>
+  <div th:if="${post.hasImage}">
+      <img th:src="@{resources/images/} + ${post.photoName}" height="200px">
+  </div>
+  <p th:text="${post.description}" style="margin-left: 50px"></p>
 </body>
 </html>

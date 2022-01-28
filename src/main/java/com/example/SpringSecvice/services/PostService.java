@@ -5,12 +5,10 @@ import com.example.SpringSecvice.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -84,5 +82,8 @@ public class PostService {
         return postRepository.sortByDate();
     }
 
+    public Post findById(Long id){
+        return postRepository.findPostById(id);
+    }
 
 }
