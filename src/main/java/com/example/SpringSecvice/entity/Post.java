@@ -17,7 +17,7 @@ public class Post {
     private Long post_id;
 
     @NotEmpty(message = "This field cannot be null")
-    @Size(min = 10, message = "At least 10 chars")
+    @Size(min = 5, message = "At least 5 chars")
     private String title;
 
     @NotEmpty(message = "This field cannot be null")

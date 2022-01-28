@@ -57,7 +57,7 @@ public class PostService {
     private String uploadPhoto(MultipartFile file) {
         String name = file.getOriginalFilename();
 
-        try(FileOutputStream fos = new FileOutputStream(uploadPath + name);){
+        try(FileOutputStream fos = new FileOutputStream(uploadPath + name)){
             fos.write(file.getBytes());
             fos.flush();
         }catch (IOException e){

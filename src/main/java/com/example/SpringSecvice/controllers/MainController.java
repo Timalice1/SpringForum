@@ -16,7 +16,6 @@ public class MainController {
     @Autowired
     PostService postService;
 
-
     @GetMapping("/all")
     public String index(Model model){
         model.addAttribute("posts", postService.findAll());
