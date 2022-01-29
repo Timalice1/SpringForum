@@ -11,7 +11,5 @@ public class MvcConfig implements WebMvcConfigurer{
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("resources/images/**")
                 .addResourceLocations("file:C:\\Users\\admin\\Desktop\\My_Folder\\Jaba\\SpringForum\\src\\main\\resources\\images\\");
-        registry.addResourceHandler("post/resources/images/**")
-                .addResourceLocations("file:C:\\Users\\admin\\Desktop\\My_Folder\\Jaba\\SpringForum\\src\\main\\resources\\images\\");
     }
 }

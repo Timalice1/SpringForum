@@ -8,8 +8,8 @@
   <h1><a href="/">Main</a></h1>
   <hr>
   <h2 th:text="${post.title}"/>
-  <div th:if="${post.hasImage}">
-      <img th:src="@{resources/images/} + ${post.photoName}" height="200px">
+  <div th:if="${post.hasImage}" style="margin-left:50px">
+      <img th:src="@{../resources/images/} + ${post.photoName}" height="200px">
   </div>
   <p th:text="${post.description}" style="margin-left: 50px"></p>
 </body>
