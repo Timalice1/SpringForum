@@ -12,5 +12,15 @@
       <img th:src="@{../resources/images/} + ${post.photoName}" height="200px">
   </div>
   <p th:text="${post.description}" style="margin-left: 50px"></p>
+
+  <form method="post" th:object="${newComment}" style="margin-left:50px">
+      <input type="text" name="comment">
+      <input type="submit" value="Add comment!">
+  </form>
+
+    <div th:if="${post.hasComments}" th:each="comment : ${comments}" style="margin-left:50px">
+        <p th:text="${comment.getText}"/>
+    </div>
+
 </body>
 </html>

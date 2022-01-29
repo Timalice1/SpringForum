@@ -1,5 +1,6 @@
 package com.example.SpringSecvice.services;
 
+import com.example.SpringSecvice.entity.Comment;
 import com.example.SpringSecvice.entity.Post;
 import com.example.SpringSecvice.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +85,13 @@ public class PostService {
 
     public Post findById(Long id){
         return postRepository.findPostById(id);
+    }
+
+    public void addComment(Long postId, Comment comment){
+        Post post = postRepository.findPostById(postId);
+
+        post.addComment(comment);
+        comment.setPost(post);
     }
 
 }

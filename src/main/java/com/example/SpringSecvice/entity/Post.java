@@ -7,6 +7,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
+
+import com.example.SpringSecvice.entity.Comment;
 
 @Data
 @Entity
@@ -26,6 +29,9 @@ public class Post {
 
     private Date date;
 
+    @OneToMany
+    private List<Comment> comments;
+
     private String creationDate;
 
     private String photoName;
@@ -35,4 +41,13 @@ public class Post {
     public boolean hasImage(){
         return photoName != null;
     }
+
+    public boolean hasComments() {return !comments.isEmpty();}
+
+    public void addComment(Comment comment){
+        comments.add(comment);
+        comment.setPost(this);
+    }
+
+
 }
