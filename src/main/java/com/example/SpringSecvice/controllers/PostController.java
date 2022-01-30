@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.util.Date;
 
 @Controller
 @RequestMapping("/post")
@@ -56,12 +55,7 @@ public class PostController {
 
     @PostMapping("/{id}")
     public String postComment(@PathVariable("id") Long id, @ModelAttribute("comment") String text, Model model){
-        Post post = postService.findById(id);
-        Comment comment = new Comment();
-        comment.setText(text);
-        comment.setDate(new Date());
-        post.addComment(comment);
-        commentRepository.save(comment);
+        postService.addComment(id, text);
         return "redirect:/post/" + id;
     }
 

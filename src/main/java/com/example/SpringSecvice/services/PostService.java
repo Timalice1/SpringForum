@@ -2,6 +2,7 @@ package com.example.SpringSecvice.services;
 
 import com.example.SpringSecvice.entity.Comment;
 import com.example.SpringSecvice.entity.Post;
+import com.example.SpringSecvice.repositories.CommentRepository;
 import com.example.SpringSecvice.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,9 @@ public class PostService {
 
     @Autowired
     PostRepository postRepository;
+
+    @Autowired
+    CommentRepository commentRepository;
 
     @Value("${upload.path}")
     private String uploadPath;
@@ -87,11 +91,13 @@ public class PostService {
         return postRepository.findPostById(id);
     }
 
-    public void addComment(Long postId, Comment comment){
+    public void addComment(Long postId, String text){
         Post post = postRepository.findPostById(postId);
-
+        Comment comment = new Comment();
+        comment.setText(text);
+        comment.setDate(new Date());
         post.addComment(comment);
-        comment.setPost(post);
+        commentRepository.save(comment);
     }
 
 }
