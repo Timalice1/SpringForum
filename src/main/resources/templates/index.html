@@ -5,16 +5,23 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-        body{
-            background-image: url(bg.png);
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <title>Document</title>
 </head>
 <body>
-    <a href="/post/new">Upload</a>
-    <hr>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Main</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/post/new">Upload</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <div th:each="post : ${posts}" class="post">
 
         <p style="margin-left: 30px"><a th:href="@{/post/{id}(id=${post.getPost_id()})}"><b th:text="${post.title}"/></a>   <small th:text="${post.creationDate}"/><p>

@@ -1,0 +1,30 @@
+*{
+    text-decoration: none;
+}
+
+header{
+    border-bottom: 1px solid gray;
+}
+
+.menu li{
+    display: inline-block;
+    margin-top: 20px;
+}
+.menu li a{
+    border:3px solid #212529;
+    border-radius:5px;
+}
+
+.menu li a:hover{
+    background-color: white;
+    border:3px solid #212529;
+    color: #212529;
+}
+
+.menu li:first-child{
+    margin-right: 87%;
+}
+
+.menu li:first-child a{
+    font-size: 35px;
+}
