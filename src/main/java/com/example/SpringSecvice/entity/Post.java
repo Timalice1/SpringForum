@@ -38,6 +38,10 @@ public class Post {
 
     private int views;
 
+    public int commentCount(){
+        return comments.size();
+    }
+
     public boolean hasImage(){
         return photoName != null;
     }
