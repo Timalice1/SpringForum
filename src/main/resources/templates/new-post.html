@@ -20,16 +20,18 @@
         </nav>
     </header>
     
-    <form method="post" enctype="multipart/form-data" th:object="${post}" class="new-post-form">
-        <input type="text" name="title"><br>
-        <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
-        <br>
-        <textarea name="description" id="description" cols="20" rows="10"></textarea>
-        <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}"/>
-        <br><br>
-        <input type="file" name="photo" multiple><br><br>
-        <input type="submit" value="Upload"><br>
-    </form>
+    <main>
+        <form method="post" enctype="multipart/form-data" th:object="${post}" class="new-post-form">
+            <input type="text" name="title"><br>
+            <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error"/>
+            <br>
+            <textarea name="description" id="description" cols="18" rows="5" ></textarea>
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"/>
+            <br><br>
+            <input type="file" name="photo" multiple><br><br>
+            <input type="submit" value="Upload"><br>
+        </form>
+    </main>
 
     <footer class="d-flex flex-wrap justify-content-center align-items-center dark" style="height:80px">
         <div class="col-md-4 d-flex align-items-center">

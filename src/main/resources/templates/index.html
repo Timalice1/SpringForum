@@ -23,20 +23,25 @@
         </nav>
     </header>
 
-    <div th:each="post : ${posts}" class="post">
+    <main>
+        <div th:each="post : ${posts}" class="post">
 
-        <p style="margin-left: 30px"><a th:href="@{/post/{id}(id=${post.getPost_id()})}"><b th:text="${post.title}"/></a>   <small th:text="${post.creationDate}"/><p>
+            <p style="margin-left: 30px"><a th:href="@{/post/{id}(id=${post.getPost_id()})}"><b th:text="${post.title}"/></a>   <small th:text="${post.creationDate}"/><p>
 
-        <div th:if="${post.hasImage}" style="margin-left: 50px">
-            <img th:src="@{resources/images/} + ${post.photoName}" height="200px">
+            <div th:if="${post.hasImage}" style="margin-left: 50px">
+                <img th:src="@{resources/images/} + ${post.photoName}" height="200px">
+            </div>
+
+            <p th:text="${post.description}" style="margin-left: 50px; margin-top: 20px"></p>
+
+            <p style="margin-left: 50px">
+                <a th:href="@{/post/{id}#comments(id=${post.getPost_id()})}">
+                    <img src="img/comment.png" alt="comments" width="40px" height="40px">&nbsp;
+                    <span th:text="${post.commentCount}"/>
+                </a>
+            </p>
         </div>
-
-        <p th:text="${post.description}" style="margin-left: 50px"></p>
-
-        <p style="margin-left: 50px">Comments: <span th:text="${post.commentCount}"/></p>
-
-        <hr>
-    </div>
+    </main>
 
 
     <footer class="d-flex flex-wrap justify-content-center align-items-center dark" style="height:80px">
